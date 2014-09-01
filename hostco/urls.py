@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^register/$', views.register, name='register'),
     url(r'^login/$', views.user_login, name='login'),
     url(r'^restricted/', views.restricted, name='restricted'),
+    url(r'^contacts/', include('contacts.urls')),
 )

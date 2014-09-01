@@ -15,12 +15,22 @@ class Person(models.Model):
     def __unicode__(self):  # Python 3: def __str__(self):
         return self.last_name
 
+class Page(models.Model):
+    person = models.ForeignKey(Person)
+    title = models.CharField(max_length=128)
+    url = models.URLField()
+    views = models.IntegerField(default=0)
+
+    def __unicode__(self):
+        return self.title
+
 class UserProfile(models.Model):
     # This line is required. Links UserProfile to a User model instance.
     user = models.OneToOneField(User)
 
     # The additional attributes we wish to include.
-#    website = models.URLField(blank=True)
+    #website = models.URLField(blank=True)
+    # Need pillow package
 #    picture = models.ImageField(upload_to='profile_images', blank=True)
 
     # Override the __unicode__() method to return out something meaningful!

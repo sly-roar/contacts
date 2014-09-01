@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+        {% block body_block %}
+        {% if user.is_authenticated %}
+        <h1>Contacts says... hello {{ user.username }}!</h1>
+            {% if persons %}
+            <ul>
+                {% for person in persons %}
+                <!-- Following line changed to add an HTML hyperlink -->
+                <li><a href="/contacts/person/{{ person.url }}">{{ person.create_date }} - {{ person.first_name }}
+                    - {{ person.second_name }} - {{ person.last_name }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>There are no persons present.</strong>
+            {% endif %}
+             <a href="/contacts/about/">About</a>
+             <a href="/contacts/add_person/">Add a New Person</a>
+            <a href="/contacts/logout/">Logout</a><br />
+        {% else %}
+            <h1>Contacts says... hello world!</h1>
+            <a href="/contacts/register/">Register Here</a>
+            <a href="/contacts/login/">Login</a>
+        {% endif %}
+{% endblock %}
