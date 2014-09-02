@@ -8,8 +8,8 @@
             <ul>
                 {% for person in persons %}
                 <!-- Following line changed to add an HTML hyperlink -->
-                <li><a href="/contacts/person/{{ person.url }}">{{ person.create_date }} - {{ person.first_name }}
-                    - {{ person.second_name }} - {{ person.last_name }}</li>
+                <li><a href="/contacts/person/{{ person.url }}">{{ person.create_date }} - {{ person.first_name }} {{ person.second_name }} {{ person.last_name }}
+			- {{ person.phone }} - {{ person.email }} </li>
                 {% endfor %}
             </ul>
             {% else %}
